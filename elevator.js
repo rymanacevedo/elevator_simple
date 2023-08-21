@@ -6,7 +6,7 @@ class Elevator {
   }
 
   goTo(floor) {
-    this.travelTime += (floor - this.currentFloor) * this.FLOOR_TIME;
+    this.travelTime += Math.abs(floor - this.currentFloor) * this.FLOOR_TIME;
     this.currentFloor = floor;
   }
 
@@ -26,6 +26,6 @@ const trip = (start, ...floors) => {
 const input = prompt('Enter the elevator start and floors to visit seperated by commas (e.g. 12,2,9,1,32):');
 
 const floors = input.split(',').map(Number);
-const startFloor = floor[0];
+const startFloor = floors[0];
 const result = trip(startFloor, ...floors.slice(1));
-
+console.log(`Total Travel Time: ${result.time} seconds`);
