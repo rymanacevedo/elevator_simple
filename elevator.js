@@ -10,6 +10,12 @@ class Elevator {
   }
 
 }
+const trip = (start, ...floors) => {
+  const elevator = new Elevator(start);
+  for (const floor of floors) {
+    elevator.goTo(floor);
+  }
+}
 
 
 const input = prompt('Enter the elevator start and floors to visit seperated by commas (e.g. 12,2,9,1,32):');
