@@ -13,12 +13,15 @@ class Elevator {
 }
 const trip = (start, ...floors) => {
   const elevator = new Elevator(start);
+  const visited = [start];
   for (const floor of floors) {
     elevator.goTo(floor);
+    visited.push(floor);
   }
 
   return {
-    time: elevator.travelTime
+    time: elevator.travelTime,
+    visited
   }
 }
 
@@ -29,3 +32,4 @@ const floors = input.split(',').map(Number);
 const startFloor = floors[0];
 const result = trip(startFloor, ...floors.slice(1));
 console.log(`Total Travel Time: ${result.time} seconds`);
+console.log("Floors visited in order:", result.visited.join(','));
