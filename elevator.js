@@ -2,11 +2,11 @@ class Elevator {
   FLOOR_TIME = 10;
   constructor(startFloor) {
     this.currentFloor = startFloor;
-    this.travelTime = 0;
+    this.time = 0;
   }
 
   goTo(floor) {
-    this.travelTime += Math.abs(floor - this.currentFloor) * this.FLOOR_TIME;
+    this.time += Math.abs(floor - this.currentFloor) * this.FLOOR_TIME;
     this.currentFloor = floor;
   }
 
@@ -20,7 +20,7 @@ const trip = (start, ...floors) => {
   }
 
   return {
-    time: elevator.travelTime,
+    time: elevator.time,
     visited
   }
 }
@@ -31,5 +31,5 @@ const input = prompt('Enter the elevator start and floors to visit seperated by 
 const floors = input.split(',').map(Number);
 const startFloor = floors[0];
 const result = trip(startFloor, ...floors.slice(1));
+console.log("Floors visited:", result.visited.join(','));
 console.log(`Total Travel Time: ${result.time} seconds`);
-console.log("Floors visited in order:", result.visited.join(','));
